@@ -1,0 +1,23 @@
+{% extends 'base.html'%}
+{%block title%} 
+Welcome to list
+{%endblock%}
+{%block content%}
+{% include 'nav.html'%}
+<h1>{{title}}</h1>
+{% for item in news%}
+
+<h1>First Name: {{item.first_name}}</h1>
+<h2>Last Name: {{item.last_name}}</h2>
+<h2>Email: {{item.email}}</h2>
+<p>Description:
+     {% if item.description|length < 10 %}
+     no description{%else%}
+     {{item.description|truncatewords:10}}
+     <a href="{% url 'details' item.id %}" class="bg-gray-800 rounded-full text-white px-2 py-1 text-sm font-medium">Read More</a>
+     {% endif%}
+    </p>
+<h2>Done : {{item.done_at}}</h2>
+--------------------------------------------------------
+{% endfor%}
+{%endblock%}

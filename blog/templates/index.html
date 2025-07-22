@@ -1,0 +1,12 @@
+{% extends 'base.html'%}
+{%block title%} 
+Welcome
+{%endblock%}
+{%block content%} 
+{% include 'nav.html'%}
+<h1>First Name: {{news.first_name}}</h1>
+<h2>Last Name: {{news.last_name}}</h2>
+<h2>Email: {{news.email}}</h2>
+<p>Description: {% if news.description|length < 10 %}no description{%else%}{{news.description|title}}{% endif%}</p>
+<h2>Done : {{news.done_at}}</h2>
+{%endblock%}
