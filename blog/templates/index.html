@@ -4,6 +4,9 @@ Welcome
 {%endblock%}
 {%block content%} 
 {% include 'nav.html'%}
+{%if request.user.is_authenticated%}
+<h1>Hello {{request.user.first_name}} </h1>
+{%endif%}
 <h1>First Name: {{news.first_name}}</h1>
 <h2>Last Name: {{news.last_name}}</h2>
 <h2>Email: {{news.email}}</h2>

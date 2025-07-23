@@ -8,6 +8,7 @@ class News(models.Model):
     date_of_birth=models.DateTimeField(auto_now_add=False ,null=True,blank=True)
     email=models.EmailField(unique=True)
     description=models.TextField()
+    is_published=models.BooleanField(default=False)
     done_at=models.DateTimeField(auto_now_add=True)
 
 

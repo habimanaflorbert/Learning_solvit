@@ -3,27 +3,18 @@ from django.http import HttpResponse
 from django.views import View
 from django.urls import reverse 
 from blog.models import Author, News
-from blog.forms import BookForm, Myforms,NewsForm,CreatingUserFrom
+from blog.forms import BookForm, Myforms,NewsForm
 from django.contrib.auth.models import User
 from django.contrib import messages
 
 # Create your views here.
 
-def register(request):
-    forms=CreatingUserFrom()
-    if request.method=='POST':
-        
-        forms=CreatingUserFrom(request.POST)
-        if forms.is_valid():
-           forms.save()
-           return redirect('home')
-        else:
-            context={'forms':forms}
-            return render(request, 'blog/register.html',context)
-           
-    context={'forms':forms}
-    return render(request, 'blog/register.html',context)
 def home(request):
+    print()
+    print()
+    print(request.user.is_authenticated)
+    print()
+    print()
     news=News.objects.last()
     context={'news':news,'title':'News for today'}
     return render(request,'index.html',context)
